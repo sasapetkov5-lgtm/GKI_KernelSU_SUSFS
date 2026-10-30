@@ -1469,6 +1469,12 @@ jobs:
           echo "CONFIG_MODULE_FORCE_LOAD=y" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_TRIM_UNUSED_KSYMS=n" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_UNUSED_SYMBOLS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_STACKPROTECTOR_PER_TASK=n" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_LOCALVERSION=\"-Wild\"" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_LOCALVERSION_AUTO=n" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_ARM64_4K_PAGES=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_ARM64_16K_PAGES=n" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_MODULE_SIG=n" >> common/arch/arm64/configs/gki_defconfig
           sed -i '/^config LSM$/,/^help$/{ /^[[:space:]]*default/ { /baseband_guard/! s/selinux/selinux,baseband_guard/ } }' common/security/Kconfig
 
       - name: 应用网络增强（BBRv3 / IPSet / Qdisc / CIFS）
